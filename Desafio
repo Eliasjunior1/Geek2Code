@@ -1,0 +1,82 @@
+#include <stdio.h>
+int espaco_dentro(int valor);
+int espaco_fora(int valor);
+int espaco_dentro_volta(int valor);
+int espaco_fora_volta(int valor);
+
+int main(){
+	
+	int i,j,total,dentro,x,fora;
+	
+	printf("Digite o valor: ");
+	scanf("%d", &x);
+	
+	total = x;
+	dentro = -1;
+	fora = x;
+	
+	if(total == 1){
+		printf("#");
+	}else{
+		
+		for(i = 0;i < total; i++){
+			if(i == 0){
+				
+				fora = espaco_fora(fora);
+				for(j = 0; j < fora;j++){
+					printf(" ");
+				}
+				printf("#\n");
+				
+			}else{
+				
+				fora = espaco_fora(fora);
+				for(j = 0; j < fora;j++){
+					printf(" ");
+				}
+				printf("#");
+				dentro = espaco_dentro(dentro);
+				for(j = 0; j < dentro; j++){
+					printf(" ");
+				}
+				printf("#\n");
+			}
+		}
+		for(i = total-1; i > 0; i--){
+			if(i == 1){
+				
+				fora = espaco_fora_volta(fora);
+				for(j = 0; j < fora;j++){
+					printf(" ");
+				}
+				printf("#\n");	
+				
+			}else{
+				
+				fora = espaco_fora_volta(fora);
+				for(j = 0; j < fora;j++){
+					printf(" ");
+				}
+				printf("#");
+			
+				dentro = espaco_dentro_volta(dentro);
+				for(j = 0; j < dentro; j++){
+					printf(" ");
+				}
+				printf("#\n");	
+			}
+		}
+	}	
+}
+int espaco_dentro(int valor){
+	return valor+2;
+}
+int espaco_fora(int valor){
+	return valor-1;
+}
+int espaco_dentro_volta(int valor){
+	return valor-2;
+}
+int espaco_fora_volta(int valor){
+	return valor+1;
+}
